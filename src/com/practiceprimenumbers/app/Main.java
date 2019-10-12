@@ -5,45 +5,45 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         //Declarations
-        int number = 0;
-        boolean isPrime = true;
+        int inNumber = 0;
+        int count = 0;
+        int vectorPrimes[];
 
         //Implements scanner
         Scanner In = new Scanner(System.in);
 
         //Input from user
         System.out.print("Write the number: ");
-        number = In.nextInt();
+        inNumber = In.nextInt();
 
         //Process
-        /*
-            --Example process with number 5--
+        vectorPrimes = new int[inNumber];
+        for (int number = inNumber; number > 0; number--){
+            //Validate the return.
+            if(ValidatePrime(number)){
+                vectorPrimes[count] = number;
+                count++;
+            }
+        }
 
-            number = 5
-            i = 2
-            5 mod i = 1
+        //Output results
+        System.out.println("The primes numbers are: ");
+        for (int i = 0; i < count; i++){
+           System.out.println(vectorPrimes[i]);
+        }
 
-            i = 3
-            5 mod i = 1
+        //Close input
+        In.close();
+    }
 
-            i = 4
-            5 mod i = 1
-
-            i = 5
-            5 mod i = 0
-
-        */
-
+    //This function is valid if the number is prime
+    public static boolean ValidatePrime(int number){
+        boolean isPrime = true;
         for (int i = 2; i < number; i++){
             if(number % i == 0){
                 isPrime = false;
             }
         }
-
-        //Output results
-        System.out.println(number+" is "+isPrime);
-
-        //Close input
-        In.close();
+        return isPrime;
     }
 }
